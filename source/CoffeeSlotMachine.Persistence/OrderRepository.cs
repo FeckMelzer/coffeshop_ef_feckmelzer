@@ -21,5 +21,11 @@ namespace CoffeeSlotMachine.Persistence
             throw new NotImplementedException();
         }
 
+        public Order OrderCoffee(Product product)
+        {
+            throw new NotImplementedException();
+        }
+        
+
     }
 }

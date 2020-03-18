@@ -32,7 +32,8 @@ namespace CoffeeSlotMachine.Core.Logic
         /// <returns></returns>
         public IEnumerable<Product> GetProducts()
         {
-            throw new NotImplementedException();
+            return _productRepository.GetProducts();
+           
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace CoffeeSlotMachine.Core.Logic
         /// <param name="product"></param>
         public Order OrderCoffee(Product product)
         {
-            throw new NotImplementedException();
+            return _orderRepository.OrderCoffee(product);
         }
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace CoffeeSlotMachine.Core.Logic
         /// <returns></returns>
         public IEnumerable<Coin> GetCoinDepot()
         {
-            throw new NotImplementedException();
+            return _coinRepository.GetCoinDepot();
         }
 
 

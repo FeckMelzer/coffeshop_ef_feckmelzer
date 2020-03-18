@@ -14,5 +14,11 @@ namespace CoffeeSlotMachine.Persistence
         {
             _dbContext = dbContext;
         }
+
+        public Product[] GetProducts() =>
+                _dbContext.Products
+                    .OrderBy(product => product.Name)
+                    .ToArray();
+                
     }
 }
