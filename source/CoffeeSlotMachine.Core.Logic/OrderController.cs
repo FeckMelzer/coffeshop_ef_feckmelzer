@@ -42,7 +42,10 @@ namespace CoffeeSlotMachine.Core.Logic
         /// <param name="product"></param>
         public Order OrderCoffee(Product product)
         {
-            return _orderRepository.OrderCoffee(product);
+            Order o = new Order();
+            o.Product = product;
+            _orderRepository.AddOrder(o);
+            return o;
         }
 
         /// <summary>
@@ -53,7 +56,12 @@ namespace CoffeeSlotMachine.Core.Logic
         /// <returns>true, wenn die Bestellung abgeschlossen ist</returns>
         public bool InsertCoin(Order order, int coinValue)
         {
-            throw new NotImplementedException();
+            if(!order.InsertCoin(coinValue))return false;
+            _coinRepository.AddCoin(coinValue);
+            order.FinishPayment(_coinRepository.GetCoinDepot());
+            return true;
+            
+
         }
 
         /// <summary>

@@ -18,7 +18,11 @@ namespace CoffeeSlotMachine.Persistence
                 _dbContext.Coins
                     .OrderBy(coin => coin.CoinValue)
                     .ToArray();
-
-       
+        public void AddCoin(int coin)
+        {
+            Coin c = new Coin();
+            c.CoinValue = coin;
+            _dbContext.Coins.Add(c);
+        }      
     }
 }

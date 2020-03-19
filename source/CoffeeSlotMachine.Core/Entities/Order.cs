@@ -55,7 +55,8 @@ namespace CoffeeSlotMachine.Core.Entities
         /// <returns>isFinished ist true, wenn der Produktpreis zumindest erreicht wurde</returns>
         public bool InsertCoin(int coinValue)
         {
-            throw new NotImplementedException();
+            if (coinValue < Product.PriceInCents) return false;
+            return true;
         }
 
         /// <summary>
@@ -66,7 +67,20 @@ namespace CoffeeSlotMachine.Core.Entities
         /// <param name="coins">Aktueller Zustand des Münzdepots</param>
         public void FinishPayment(IEnumerable<Coin> coins)
         {
-            throw new NotImplementedException();
+            //Call MoveNext() exception?
+            int sum = 0;
+            IEnumerator<Coin> enumerator = coins.GetEnumerator();
+            do
+            {
+                ThrownInCoinValues += enumerator.Current.ToString() + ";";
+                sum += enumerator.Current.CoinValue; 
+            } while (sum != Product.PriceInCents && enumerator.MoveNext());
+
+            do
+            {
+                ReturnCoinValues += enumerator.Current.ToString();
+            } while (enumerator.MoveNext());
+
         }
     }
 }

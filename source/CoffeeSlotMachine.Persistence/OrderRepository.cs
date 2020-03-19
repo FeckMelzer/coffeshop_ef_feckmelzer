@@ -21,10 +21,12 @@ namespace CoffeeSlotMachine.Persistence
             throw new NotImplementedException();
         }
 
-        public Order OrderCoffee(Product product)
+        public void AddOrder(Order o)
         {
-            throw new NotImplementedException();
+            
+            _dbContext.Orders.Add(o);
         }
+            
         
 
     }
